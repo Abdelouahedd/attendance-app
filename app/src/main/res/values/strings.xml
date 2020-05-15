@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AttendanceApp</string>
+    <string name="login_username_hint">Enter your Username</string>
+    <string name="login_password_hint">Enter Your Password</string>
+    <string name="login_username_helper">You May Use Your Email</string>
 </resources>
