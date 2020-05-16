@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/nav_home"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/nav_profile"/>
+    <item
+        android:id="@+id/nav_generate"
+        android:enabled="true"
+        android:icon="@drawable/ic_add_box_black_24dp"
+        android:title="@string/nav_generate"/>
+    <item
+        android:id="@+id/nav_consult"
+        android:enabled="true"
+        android:icon="@drawable/ic_content_paste_black_24dp"
+        android:title="@string/nav_consult"/>
+    <item
+        android:id="@+id/nav_classes"
+        android:enabled="true"
+        android:icon="@drawable/ic_school_black_24dp"
+        android:title="@string/nav_classes"/>
+</menu>

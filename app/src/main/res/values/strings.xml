@@ -1,6 +1,15 @@
 <resources>
+
+    <!--    login-->
     <string name="app_name">AttendanceApp</string>
     <string name="login_username_hint">Enter your Username</string>
     <string name="login_password_hint">Enter Your Password</string>
     <string name="login_username_helper">You May Use Your Email</string>
+
+    <!--    bottom navigation-->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_generate">Generate</string>
+    <string name="nav_consult">Consult</string>
+    <string name="nav_classes">Classes</string>
 </resources>
