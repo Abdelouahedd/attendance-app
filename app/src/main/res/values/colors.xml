@@ -7,4 +7,7 @@
     <color name="colorBackground">#FAFAFA</color>
     <color name="colorAccent">#FF5722</color>
     <color name="colorError">#B00020</color>
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
 </resources>
