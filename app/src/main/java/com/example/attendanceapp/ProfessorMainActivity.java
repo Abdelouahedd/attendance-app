@@ -23,13 +23,14 @@ public class ProfessorMainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = new HomeFragment();
 
-                if (item.getItemId() == R.id.nav_home) {
+                if (item.getItemId() == R.id.nav_home)
                     fragment = new HomeFragment();
-                }
                 if( item.getItemId() == R.id.nav_profile)
                     fragment = new ProfileFragment();
                 if ( item.getItemId() == R.id.nav_generate )
                     fragment = new GenerateFragment();
+                if ( item.getItemId() == R.id.nav_classes )
+                    fragment = new ClassesFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();

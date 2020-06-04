@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_classes">
+
+    <!-- header -->
+    <LinearLayout
+        android:id="@+id/classes_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_classe_logo_foreground" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_font_size"
+                android:textColor="@color/colorBackground"
+                android:textAllCaps="true"
+                android:paddingVertical="@dimen/title_vertical_padding"
+                android:textAlignment="textStart"
+                android:text="@string/classes_title" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subtitle_font_size"
+                android:textColor="@color/light_medium_gray"
+                android:paddingVertical="@dimen/subtitle_vertical_padding"
+                android:text="@string/classes_subtitle" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- search input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filter_class_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/classes_header"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        app:startIconDrawable="@drawable/ic_search_black_24dp"
+        android:hint="@string/filter_classes_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/filter_classes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EDE9E9"
+            android:backgroundTint="#FFFFFF" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintTop_toBottomOf="@id/filter_class_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/classes_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add_white_24dp"
+            android:backgroundTint="@color/colorAccent" />
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

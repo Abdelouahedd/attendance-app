@@ -32,4 +32,9 @@
         <item>Genie Procede et Energie</item>
         <item>Genie Science et donnee</item>
     </string-array>
+
+    <!-- classes UI -->
+    <string name="classes_title">Classes</string>
+    <string name="classes_subtitle">List of classes your are teaching</string>
+    <string name="filter_classes_hint">Classe name, subject, Date</string>
 </resources>
