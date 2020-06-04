@@ -22,4 +22,14 @@
     <string name="email">Angela2020@pm.me</string>
     <string name="password">Helloworld</string>
     <string name="phone">+212611223344</string>
+
+    <!-- generate UI -->
+    <string name="generate_title">Generate Qr Code</string>
+    <string-array name="classes">
+        <item>Genie Info</item>
+        <item>Genie Reseau</item>
+        <item>Genie Electrique</item>
+        <item>Genie Procede et Energie</item>
+        <item>Genie Science et donnee</item>
+    </string-array>
 </resources>

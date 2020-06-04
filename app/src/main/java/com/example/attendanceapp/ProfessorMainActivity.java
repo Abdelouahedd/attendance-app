@@ -28,7 +28,8 @@ public class ProfessorMainActivity extends AppCompatActivity {
                 }
                 if( item.getItemId() == R.id.nav_profile)
                     fragment = new ProfileFragment();
-
+                if ( item.getItemId() == R.id.nav_generate )
+                    fragment = new GenerateFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();
