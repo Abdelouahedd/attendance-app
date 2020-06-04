@@ -25,7 +25,10 @@ public class ProfessorMainActivity extends AppCompatActivity {
 
                 if (item.getItemId() == R.id.nav_home) {
                     fragment = new HomeFragment();
-                } 
+                }
+                if( item.getItemId() == R.id.nav_profile)
+                    fragment = new ProfileFragment();
+
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();

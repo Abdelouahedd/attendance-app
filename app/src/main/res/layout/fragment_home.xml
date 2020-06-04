@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="30dp"
-                android:text="Welcome John Wick"
+                android:text="Welcome Angela Mose"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="24sp" />
