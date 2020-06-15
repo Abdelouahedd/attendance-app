@@ -5,4 +5,19 @@
 
     <dimen name="subtitle_font_size">15sp</dimen>
     <dimen name="subtitle_vertical_padding">5dp</dimen>
+
+    <dimen name="search_input_hpadding">10dp</dimen>
+    <!-- header -->
+    <dimen name="header_title_textsize">30sp</dimen>
+    <dimen name="header_subtitle_textsize">15sp</dimen>
+
+    <dimen name="list_view_margin">5dp</dimen>
+    <!-- list item style -->
+    <dimen name="li_title_textsize">20sp</dimen>
+    <dimen name="li_title_hpadding">20dp</dimen>
+
+    <dimen name="li_subtitle_textsize">10sp</dimen>
+
+    <dimen name="label_padding_left">5dp</dimen>
+    <dimen name="label_width">80dp</dimen>
 </resources>

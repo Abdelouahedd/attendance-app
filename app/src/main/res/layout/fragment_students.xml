@@ -3,35 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_classes">
+    android:id="@+id/fragment_students">
 
     <!-- header -->
     <LinearLayout
-        android:id="@+id/classes_header"
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/header"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/header_title"
-            android:text="@string/cl_header_title" />
+            android:text="@string/st_header_title"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/header_subtitle"
-            android:text="@string/cl_header_subtitle" />
+            android:text="@string/st_header_subtitle" />
     </LinearLayout>
 
-    <!-- search input -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filter_class_layout"
+        android:id="@+id/search_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/classes_header"
+        app:layout_constraintTop_toBottomOf="@id/header"
         style="@style/search_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -45,21 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/list_view_margin"
-        app:layout_constraintTop_toBottomOf="@id/filter_class_layout"
+        app:layout_constraintTop_toBottomOf="@id/search_input"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/classes_list_view"
+            android:id="@+id/students_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_add_white_24dp"
-            android:backgroundTint="@color/colorPrimaryLight" />
     </RelativeLayout>
 
 

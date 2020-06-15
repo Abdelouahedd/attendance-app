@@ -33,8 +33,18 @@
         <item>Genie Science et donnee</item>
     </string-array>
 
+    <string name="search_input_hint">Type to filter …</string>
+
     <!-- classes UI -->
-    <string name="classes_title">Classes</string>
-    <string name="classes_subtitle">List of classes your are teaching</string>
+    <string name="cl_header_title">classes</string>
+    <string name="cl_header_subtitle">List of classes your are teaching</string>
     <string name="filter_classes_hint">Classe name, subject, Date</string>
+
+    <!-- students list fragment-->
+    <string name="st_header_title">Student</string>
+    <string name="st_header_subtitle">List of student in this classes</string>
+    <string name="points">Points</string>
+    <string name="joined">Joined</string>
+    <string name="present">Present</string>
+    <string name="absent">Absent</string>
 </resources>
