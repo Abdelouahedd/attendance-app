@@ -78,7 +78,7 @@
                 android:layout_width="@dimen/label_width"
                 android:layout_height="wrap_content"
                 style="@style/li_key"
-                android:text="@string/points" />
+                android:text="@string/present" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:layout_width="@dimen/label_width"
                 android:layout_height="wrap_content"
                 style="@style/li_key"
-                android:text="@string/points" />
+                android:text="@string/absent" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
