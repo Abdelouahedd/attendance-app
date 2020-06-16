@@ -52,21 +52,49 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:paddingEnd">20dp</item>
     </style>
-
     <style name="li_subtitle">
         <item name="android:textSize">@dimen/li_subtitle_textsize</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textAllCaps">true</item>
     </style>
-
     <style name="li_key">
         <item name="android:paddingLeft">@dimen/label_padding_left</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginStart">20dp</item>
 <!--        <item name="android:textColor">@color/colorPrimary</item>-->
     </style>
-
     <style name="li_value">
         <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <!-- stats cards -->
+    <style name="st_card">
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginVertical">10dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="st_card_key">
+        <item name="android:background">@color/cardview_light_background</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">@dimen/st_card_key_padding</item>
+        <item name="android:textSize">@dimen/st_card_key_textsize</item>
+    </style>
+    <style name="st_card_value">
+        <item name="android:background">@color/cardview_shadow_end_color</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">@dimen/st_card_value_padding</item>
+        <item name="android:textSize">@dimen/st_card_value_textsize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+    <style name="st_classes_layout">
+        <item name="android:layout_marginHorizontal">10dp</item>
+        <item name="android:layout_marginVertical">30dp</item>
+    </style>
+    <style name="st_class_label">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:paddingLeft">6dp</item>
     </style>
 </resources>

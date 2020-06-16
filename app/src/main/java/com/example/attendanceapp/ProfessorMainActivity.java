@@ -16,6 +16,10 @@ public class ProfessorMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor_main);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new HomeFragment())
+                .commit();
 
         navMenu = findViewById(R.id.bottom_nav_menu);
         navMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,6 +33,8 @@ public class ProfessorMainActivity extends AppCompatActivity {
                     fragment = new ProfileFragment();
                 if ( item.getItemId() == R.id.nav_generate )
                     fragment = new GenerateFragment();
+                if ( item.getItemId() == R.id.nav_consult )
+                    fragment = new StatsFragment();
                 if ( item.getItemId() == R.id.nav_classes )
                     fragment = new ClassesFragment();
                 getSupportFragmentManager().beginTransaction()

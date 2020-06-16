@@ -20,4 +20,10 @@
 
     <dimen name="label_padding_left">5dp</dimen>
     <dimen name="label_width">80dp</dimen>
+
+    <!-- stats cards dimenstion -->
+    <dimen name="st_card_key_padding">10dp</dimen>
+    <dimen name="st_card_value_padding">20dp</dimen>
+    <dimen name="st_card_key_textsize">20sp</dimen>
+    <dimen name="st_card_value_textsize">30sp</dimen>
 </resources>

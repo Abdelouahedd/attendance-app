@@ -47,4 +47,9 @@
     <string name="joined">Joined</string>
     <string name="present">Present</string>
     <string name="absent">Absent</string>
+
+<!--    stats ui-->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_subtitle">Detailed informations about your
+        classes</string>
 </resources>
