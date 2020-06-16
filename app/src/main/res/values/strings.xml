@@ -52,4 +52,10 @@
     <string name="stats_title">Statistics</string>
     <string name="stats_subtitle">Detailed informations about your
         classes</string>
+
+<!--    jutificatin ui-->
+    <string name="js_header_title">Justifications</string>
+    <string name="js_header_subtitle">The provided justification
+        documents</string>
+    <string name="js_subheader_label">Presence Rate:</string>
 </resources>
