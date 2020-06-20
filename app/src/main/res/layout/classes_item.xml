@@ -6,6 +6,7 @@
     android:layout_marginVertical="5dp"
     android:layout_marginHorizontal="5dp"
     android:background="@drawable/shape_class_item"
+    android:backgroundTint="#fafafa"
     app:layout_constraintCircleRadius="10dp">
 
     <LinearLayout

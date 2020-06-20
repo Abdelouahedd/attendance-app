@@ -12,6 +12,164 @@
         <item name="colorError">@color/colorError</item>
     </style>
 
+    <style name="card">
+        <item name="android:background">@drawable/gradient_dark_light</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+
+    <!-- home ui -->
+    <style name="hm_card_item">
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:drawableStart">@drawable/ic_notifications_black_24dp</item>
+    </style>
+    <style name="hm_appname">
+        <item name="android:layout_marginVertical">36dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="hm_date">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#fafafa</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="hm_usertext">
+        <item name="android:paddingVertical">30dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:textSize">27sp</item>
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+    </style>
+    <style name="hm_card">
+        <item name="android:layout_marginVertical">10dp</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <!-- profile ui -->
+    <style name="pr_pic">
+        <item name="civ_border_color">@color/colorBackground</item>
+        <item name="civ_border_width">4dp</item>
+        <item name="civ_shadow">true</item>
+        <item name="civ_shadow_radius">10dp</item>
+        <item name="civ_shadow_color">@color/colorPrimaryLight</item>
+    </style>
+    <style name="pr_username">
+        <item name="android:paddingHorizontal">25dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="pr_jobtitle">
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="pr_editbutton">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="fabSize">mini</item>
+        <item name="android:src">@drawable/ic_edit_white_24dp</item>
+        <item name="tint">#fafafa</item>
+    </style>
+    <style name="pr_card">
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginVertical">30dp</item>
+        <item name="elevation">10dp</item>
+    </style>
+    <style name="pr_card_sidebar_text">
+        <item name="android:layout_gravity">center</item>
+        <item name="fontFamily">monospace</item>
+        <item name="android:rotation">-90</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+    <style name="pr_card_key">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+    <style name="pr_card_value">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- generate ui -->
+    <style name="gn_card">
+        <item name="android:layout_marginHorizontal">40dp</item>
+        <item name="android:layout_marginVertical">20dp</item>
+        <item name="elevation">20dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">40dp</item>
+    </style>
+    <style name="gn_card_header">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">#fafafa</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="gn_button">
+        <item name="android:paddingHorizontal">30dp</item>
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="icon">@drawable/ic_add_white_24dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- stat ui -->
+    <style name="st_header">
+        <item name="android:background">@drawable/gradient_dark_light</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="st_header_title">
+        <item name="android:textSize">@dimen/header_title_textsize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#FAFAFA</item>
+    </style>
+    <style name="st_header_subtitle">
+        <item name="android:textSize">@dimen/header_subtitle_textsize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+    <style name="st_card_layout">
+        <item name="backgroundTint">@drawable/shape_border</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="st_button">
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <!-- classes ui -->
+    <style name="cl_header">
+        <item name="android:background">@drawable/gradient_dark_light</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="cl_addclass">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:src">@drawable/ic_add_white_24dp</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">#fafafa</item>
+    </style>
 
     <!-- header -->
     <style name="header">
@@ -102,6 +260,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginVertical">5dp</item>
         <item name="android:paddingLeft">6dp</item>
+        <item name="android:textColor">#fafafa</item>
     </style>
 
 

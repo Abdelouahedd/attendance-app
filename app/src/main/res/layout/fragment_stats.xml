@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_stats">
 
@@ -11,17 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        style="@style/header">
+        style="@style/st_header">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/header_title"
+            style="@style/st_header_title"
             android:text="@string/stats_title" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/header_subtitle"
+            style="@style/st_header_subtitle"
             android:text="@string/stats_subtitle" />
     </LinearLayout>
 
@@ -63,7 +64,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                style="@style/st_card_layout">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/st_card_key"
@@ -101,7 +102,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                style="@style/st_card_layout">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/st_card_key"
@@ -130,7 +131,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                style="@style/st_card_layout">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/st_card_key"
@@ -168,7 +169,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                style="@style/st_card_layout">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/st_card_key"
@@ -197,7 +198,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                style="@style/st_card_layout">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/st_card_key"
@@ -215,156 +216,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/class_input"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/st_card">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_key"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Presence " />-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_value"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="70%" />-->
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/st_card">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_key"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Male " />-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_value"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="60%" />-->
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/st_card">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_key"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Female " />-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_value"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="40%" />-->
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/st_card">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_key"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Sessions" />-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_value"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="64" />-->
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/st_card">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_key"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="students " />-->
-
-<!--                    <com.google.android.material.textview.MaterialTextView-->
-<!--                        style="@style/st_card_value"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="43" />-->
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-
-<!--        </LinearLayout>-->
-
-<!--    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -375,12 +226,12 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            style="@style/st_button"
             android:text="Export All (pdf)" />
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            style="@style/st_button"
             android:text="Export All (CSV)" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
