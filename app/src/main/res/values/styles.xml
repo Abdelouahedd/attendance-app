@@ -130,6 +130,31 @@
         <item name="icon">@drawable/ic_add_white_24dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <!-- stat ui -->
+    <style name="st_header">
+        <item name="android:background">@drawable/gradient_dark_light</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="st_header_title">
+        <item name="android:textSize">@dimen/header_title_textsize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#FAFAFA</item>
+    </style>
+    <style name="st_header_subtitle">
+        <item name="android:textSize">@dimen/header_subtitle_textsize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+    <style name="st_card_layout">
+        <item name="backgroundTint">@drawable/shape_border</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="st_button">
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+    </style>
     <!-- header -->
     <style name="header">
         <item name="android:background">@color/colorPrimary</item>
@@ -219,6 +244,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginVertical">5dp</item>
         <item name="android:paddingLeft">6dp</item>
+        <item name="android:textColor">#fafafa</item>
     </style>
 
 
