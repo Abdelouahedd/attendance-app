@@ -14,6 +14,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -54,9 +55,13 @@ public class LoginActivity extends AppCompatActivity {
 
                             if ( task.isSuccessful() ) {
 
+                                String authUserId =
+                                        FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                                 Intent intent =
                                         new Intent(getBaseContext(),
                                                 ProfessorMainActivity.class);
+                                intent.putExtra("UUID", authUserId);
                                 startActivity(intent);
 
                             } else {
