@@ -36,7 +36,7 @@ public class ProfessorMainActivity extends AppCompatActivity {
                 if ( item.getItemId() == R.id.nav_consult )
                     fragment = new StatsFragment();
                 if ( item.getItemId() == R.id.nav_classes )
-                    fragment = new StudentsFragment();
+                    fragment = new ClassesFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();
