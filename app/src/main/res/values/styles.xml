@@ -58,7 +58,58 @@
         <item name="android:elevation">2dp</item>
     </style>
 
-
+    <!-- profile ui -->
+    <style name="pr_pic">
+        <item name="civ_border_color">@color/colorBackground</item>
+        <item name="civ_border_width">4dp</item>
+        <item name="civ_shadow">true</item>
+        <item name="civ_shadow_radius">10dp</item>
+        <item name="civ_shadow_color">@color/colorPrimaryLight</item>
+    </style>
+    <style name="pr_username">
+        <item name="android:paddingHorizontal">25dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="pr_jobtitle">
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="pr_editbutton">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+        <item name="fabSize">mini</item>
+        <item name="android:src">@drawable/ic_edit_white_24dp</item>
+        <item name="tint">#fafafa</item>
+    </style>
+    <style name="pr_card">
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginVertical">30dp</item>
+        <item name="elevation">10dp</item>
+    </style>
+    <style name="pr_card_sidebar_text">
+        <item name="android:layout_gravity">center</item>
+        <item name="fontFamily">monospace</item>
+        <item name="android:rotation">-90</item>
+        <item name="android:textColor">#fafafa</item>
+    </style>
+    <style name="pr_card_key">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+    <style name="pr_card_value">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
     <!-- header -->
     <style name="header">
         <item name="android:background">@color/colorPrimary</item>

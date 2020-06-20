@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fafafa"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_profile">
 
@@ -13,21 +14,30 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/gradient_dark_light">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profile_pic"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/profile_pc"
-                app:civ_border_color="@color/colorBackground"
-                app:civ_border_width="4dp"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="10dp"
-                app:civ_shadow_color="#3f51b5"/>
-        </RelativeLayout>
+                style="@style/pr_pic"/>
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profile_pic"
+                android:text="@string/username"
+                style="@style/pr_username"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <RelativeLayout
@@ -36,38 +46,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="25dp"
-                android:paddingVertical="10dp"
-                android:text="@string/username"
-                android:textColor="#fafafa"
-                android:textSize="30sp" />
-
-            <TextView
                 android:id="@+id/job_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="5dp"
-                android:paddingHorizontal="20dp"
-                android:layout_below="@+id/username"
                 android:text="@string/job_title"
-                android:textColor="@color/colorPrimaryLight"
-                android:textSize="18sp" />
+                style="@style/pr_jobtitle" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/edit_general_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/colorAccent"
-                app:fabSize="mini"
-                android:src="@drawable/ic_edit_white_24dp"
-                android:tint="@color/colorBackground"
+                style="@style/pr_editbutton"
                 tools:ignore="RelativeOverlap" />
         </RelativeLayout>
     </LinearLayout>
@@ -77,8 +66,7 @@
         android:id="@+id/user_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="30dp"
+        style="@style/pr_card"
         app:layout_constraintTop_toBottomOf="@+id/profile_header">
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,11 +83,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="monospace"
-                    android:rotation="-90"
-                    android:text="USER"
-                    android:textColor="#fafafa"/>
+                    style="@style/pr_card_sidebar_text"
+                    android:text="USER" />
             </LinearLayout>
 
             <!-- card content -->
@@ -112,52 +97,37 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
                     android:text="First Name" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
                     android:text="@string/first_name" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
                     android:text="Last Name" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
                     android:text="@string/last_name" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
                     android:text="University" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/university"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
                     android:text="@string/university" />
             </LinearLayout>
 
@@ -169,8 +139,7 @@
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="30dp"
+        style="@style/pr_card"
         app:layout_constraintTop_toBottomOf="@+id/user_card">
         <LinearLayout
             android:layout_width="match_parent"
@@ -185,10 +154,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="monospace"
-                    android:rotation="-90"
-                    android:textColor="#fafafa"
+                    style="@style/pr_card_sidebar_text"
                     android:text="ACCOUNT" />
             </LinearLayout>
 
@@ -202,55 +168,42 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
+
                     android:text="Email" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
                     android:text="@string/email" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
+
                     android:text="Password" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
+
                     android:text="@string/password" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    android:paddingVertical="5dp"
-                    android:paddingLeft="20dp"
+                    style="@style/pr_card_key"
                     android:text="Phone Number" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:textColor="@color/colorTextPrimary"
-                    android:paddingStart="20dp"
-                    android:textSize="20sp"
+                    style="@style/pr_card_value"
                     android:text="@string/phone" />
             </LinearLayout>
 
