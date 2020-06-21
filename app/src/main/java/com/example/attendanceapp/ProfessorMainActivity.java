@@ -61,7 +61,7 @@ public class ProfessorMainActivity extends AppCompatActivity {
                 if ( item.getItemId() == R.id.nav_consult )
                     fragment = new StatsFragment();
                 if ( item.getItemId() == R.id.nav_classes )
-                    fragment = new JustificationsFragment();
+                    fragment = ClassesFragment.newInstance(classrooms);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();
@@ -146,5 +146,13 @@ public class ProfessorMainActivity extends AppCompatActivity {
 
     public DocumentReference getProfDocumentRef() {
         return profDocumentRef;
+    }
+
+    public String getProfessorUUID() {
+        return uuid;
+    }
+
+    public FirebaseFirestore getDb() {
+        return db;
     }
 }
