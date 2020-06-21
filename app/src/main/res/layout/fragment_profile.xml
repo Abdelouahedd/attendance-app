@@ -53,7 +53,7 @@
                 style="@style/pr_jobtitle" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/edit_general_info"
+                android:id="@+id/edit_profile_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/pr_editbutton"

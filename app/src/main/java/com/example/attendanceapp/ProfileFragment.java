@@ -1,30 +1,38 @@
 package com.example.attendanceapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
 
-import java.io.Serializable;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements EditProfileDialog.EditProfileListner {
 
     Professor professor;
+
     private TextView usernameView;
     private TextView jobtitleview;
+
     private MaterialTextView firstNameView;
     private MaterialTextView lastNameView;
     private MaterialTextView universityView;
     private MaterialTextView emailView;
     private MaterialTextView passwordView;
     private MaterialTextView phoneView;
+
+    private FloatingActionButton editButton;
 
 
     @Nullable
@@ -46,6 +54,14 @@ public class ProfileFragment extends Fragment {
         emailView = view.findViewById(R.id.email);
         passwordView = view.findViewById(R.id.password);
         phoneView  = view.findViewById(R.id.phone);
+        editButton = view.findViewById(R.id.edit_profile_info);
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditDialog();
+            }
+        });
 
         updateUI(this.professor);
     }
@@ -72,5 +88,36 @@ public class ProfileFragment extends Fragment {
         passwordView.setText(professor.getPassword());
         phoneView.setText(professor.getPhone());
 
+    }
+
+    private void openEditDialog() {
+        EditProfileDialog editDialog = EditProfileDialog.newInstance(professor);
+        editDialog.setTargetFragment(ProfileFragment.this, 1);
+        editDialog.show(getActivity().getSupportFragmentManager(), "Edit " +
+                "Dialog");
+    }
+
+    @Override
+    public void applyChange() {
+        ProfessorMainActivity activity = (ProfessorMainActivity) getActivity();
+        activity.getProfDocumentRef().set(professor)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        Toast.makeText(getContext(), "Data Saved " +
+                                "succesffully", Toast.LENGTH_LONG).show();;
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(getContext(), "Failed to save data",
+                        Toast.LENGTH_LONG).show();
+                Log.d("FIREBASE_DEBUG", e.toString());
+            }
+        });
+        updateUI(professor);
     }
 }

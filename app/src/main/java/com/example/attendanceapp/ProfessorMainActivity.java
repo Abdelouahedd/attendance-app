@@ -108,4 +108,12 @@ public class ProfessorMainActivity extends AppCompatActivity {
                 });
 
     }
+
+    public FirebaseFirestore getDb() {
+        return db;
+    }
+
+    public DocumentReference getProfDocumentRef() {
+        return profDocumentRef;
+    }
 }
