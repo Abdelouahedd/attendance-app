@@ -44,10 +44,10 @@ public class ProfessorMainActivity extends AppCompatActivity {
         navMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = new HomeFragment();
+                Fragment fragment = HomeFragment.newInstance(professor.getFirstName());
 
                 if (item.getItemId() == R.id.nav_home)
-                    fragment = new HomeFragment();
+                    fragment = HomeFragment.newInstance(professor.getFirstName());
                 if( item.getItemId() == R.id.nav_profile)
                     fragment = ProfileFragment.newInstance(professor);
                 if ( item.getItemId() == R.id.nav_generate )
