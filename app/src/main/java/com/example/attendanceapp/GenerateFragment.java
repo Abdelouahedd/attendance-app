@@ -1,5 +1,7 @@
 package com.example.attendanceapp;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -18,9 +20,18 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GenerateFragment extends Fragment {
 
@@ -82,7 +93,12 @@ public class GenerateFragment extends Fragment {
                 Boolean doGenerateLink = linkSwitch.isChecked();
                 Classroom classroom = (Classroom) classroomsSpinner.getSelectedItem();
 
-                generateQrCode(classroom, duration, doGenerateLink);
+                QrCode qrcode = generateQrCode(classroom, duration,
+                        doGenerateLink);
+
+                if ( qrcode != null ) {
+                    openQrCodeDialog(qrcode, classroom, duration);
+                }
             }
         });
     }
@@ -98,9 +114,48 @@ public class GenerateFragment extends Fragment {
 
     }
 
-    private void generateQrCode(Classroom classroom, int duration,
-                                Boolean geneateLink) {
+    private QrCode generateQrCode(Classroom classroom, int duration,
+                                Boolean geneateLink)  {
         String msg = classroom +  " " + duration + " " + geneateLink;
-        Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
+        String charset = "UTF-8";
+        int qrCodewidth = 200;
+        int qrCodeheight = 200;
+        Map hintMap = new HashMap();
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+
+        try {
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                    new String(msg.getBytes(charset), charset),
+                    BarcodeFormat.QR_CODE, qrCodewidth, qrCodeheight, hintMap);
+            Bitmap ImageBitmap = Bitmap.createBitmap(qrCodewidth, qrCodeheight,
+                    Bitmap.Config.ARGB_8888);
+            for (int i = 0; i < qrCodewidth; i++) {// width
+                for (int j = 0; j < qrCodeheight; j++) {// height
+                    ImageBitmap.setPixel(i, j, matrix.get(i, j) ? Color.BLACK
+                            : Color.WHITE);
+                }
+            }
+
+            Toast.makeText(getContext(), "Qr Code Generated",
+                    Toast.LENGTH_SHORT).show();
+
+            return new QrCode(ImageBitmap);
+        } catch (UnsupportedEncodingException | WriterException e) {
+            Toast.makeText(getContext(), "Failed to generate qr Code", Toast.LENGTH_SHORT).show();
+            Log.d("QRCODE", "generateQrCode: " + e.getMessage());
+            return null;
+        }
+
     }
+
+    private void openQrCodeDialog(QrCode qrcode, Classroom classroom,
+                                  int duration) {
+
+        QrCodeDiaglo dialog = QrCodeDiaglo.newInstance(qrcode,
+                classroom.getLabel(), duration);
+        dialog.setTargetFragment(GenerateFragment.this, 2);
+        dialog.show(getActivity().getSupportFragmentManager(), "Qrcode dialog");
+
+    }
+
 }
