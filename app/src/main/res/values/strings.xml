@@ -25,7 +25,7 @@
 
     <!-- generate UI -->
     <string name="generate_title">Generate Qr Code</string>
-    <string-array name="classes">
+    <string-array name="aClasses">
         <item>Genie Info</item>
         <item>Genie Reseau</item>
         <item>Genie Electrique</item>
@@ -35,14 +35,14 @@
 
     <string name="search_input_hint">Type to filter …</string>
 
-    <!-- classes UI -->
-    <string name="cl_header_title">classes</string>
-    <string name="cl_header_subtitle">List of classes your are teaching</string>
+    <!-- aClasses UI -->
+    <string name="cl_header_title">aClasses</string>
+    <string name="cl_header_subtitle">List of aClasses your are teaching</string>
     <string name="filter_classes_hint">Classe name, subject, Date</string>
 
     <!-- students list fragment-->
     <string name="st_header_title">Student</string>
-    <string name="st_header_subtitle">List of student in this classes</string>
+    <string name="st_header_subtitle">List of student in this aClasses</string>
     <string name="points">Points</string>
     <string name="joined">Joined</string>
     <string name="present">Present</string>
@@ -51,7 +51,7 @@
 <!--    stats ui-->
     <string name="stats_title">Statistics</string>
     <string name="stats_subtitle">Detailed informations about your
-        classes</string>
+        aClasses</string>
 
 <!--    jutificatin ui-->
     <string name="js_header_title">Justifications</string>

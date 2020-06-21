@@ -15,6 +15,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfessorMainActivity extends AppCompatActivity {
 
@@ -23,7 +28,7 @@ public class ProfessorMainActivity extends AppCompatActivity {
     DocumentReference profDocumentRef;
     BottomNavigationView navMenu;
     String uuid;
-
+    List<Classroom> classrooms = new ArrayList<>(10);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class ProfessorMainActivity extends AppCompatActivity {
         professor = new Professor(uuid);
         profDocumentRef = db.collection("professors").document(uuid);
         loadProfessorInformation(uuid);
+        loadClassroomsInformation(uuid);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -51,7 +57,7 @@ public class ProfessorMainActivity extends AppCompatActivity {
                 if( item.getItemId() == R.id.nav_profile)
                     fragment = ProfileFragment.newInstance(professor);
                 if ( item.getItemId() == R.id.nav_generate )
-                    fragment = new GenerateFragment();
+                    fragment = GenerateFragment.newInstance(classrooms);
                 if ( item.getItemId() == R.id.nav_consult )
                     fragment = new StatsFragment();
                 if ( item.getItemId() == R.id.nav_classes )
@@ -109,8 +115,33 @@ public class ProfessorMainActivity extends AppCompatActivity {
 
     }
 
-    public FirebaseFirestore getDb() {
-        return db;
+    private void loadClassroomsInformation(String uuid) {
+        db.collection("classrooms")
+                .whereEqualTo("professorUUID", uuid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot:
+                                queryDocumentSnapshots) {
+
+                            Classroom classroom =
+                                    documentSnapshot.toObject(Classroom.class);
+                            classrooms.add(classroom);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Toast.makeText(getBaseContext(), "Failed to load " +
+                                "classrooms", Toast.LENGTH_LONG).show();
+                        Log.d("FIREBASE_DEBUG", "onFailure: " + e.toString());
+                    }
+                });
+
     }
 
     public DocumentReference getProfDocumentRef() {

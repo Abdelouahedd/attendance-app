@@ -8,9 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.attendanceapp.Classe;
-import com.example.attendanceapp.R;
-
 import java.util.List;
 
 public class ClassesListAdapter extends RecyclerView.Adapter {
@@ -32,9 +29,9 @@ public class ClassesListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private List<Classe> classes;
-    public ClassesListAdapter(List<Classe> classes) {
-        this.classes = classes;
+    private List<Classroom> aClasses;
+    public ClassesListAdapter(List<Classroom> aClasses) {
+        this.aClasses = aClasses;
     }
     @NonNull
     @Override
@@ -50,18 +47,18 @@ public class ClassesListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Classe currentClasse = classes.get(position);
+        Classroom currentClassroom = aClasses.get(position);
         ClassListViewHolder classHolder = (ClassListViewHolder) holder;
 
-        classHolder.mClasseName.setText(currentClasse.getClassName());
-        classHolder.mSubjectName.setText(currentClasse.getSubject());
-        classHolder.mStudentsNumber.setText(currentClasse.getStudents().toString());
-        classHolder.mclassCreationDate.setText(currentClasse.getCreatedAt().toString());
+        classHolder.mClasseName.setText(currentClassroom.getLabel());
+        classHolder.mSubjectName.setText(currentClassroom.getSubject());
+        classHolder.mStudentsNumber.setText(currentClassroom.getNumberStudents().toString());
+        classHolder.mclassCreationDate.setText(currentClassroom.getCreatedAt().toString());
     }
 
 
     @Override
     public int getItemCount() {
-        return classes.size();
+        return aClasses.size();
     }
 }

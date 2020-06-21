@@ -30,11 +30,11 @@ public class ClassesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        List<Classe> classes = Classe.dataSource(10);
+        List<Classroom> aClasses = Classroom.dataSource(10);
 
         classesList = view.findViewById(R.id.classes_list_view);
         classesList.setHasFixedSize(true);
-        classListAdapter = new ClassesListAdapter(classes);
+        classListAdapter = new ClassesListAdapter(aClasses);
         classListLayoutManager = new LinearLayoutManager(getContext());
 
         classesList.setLayoutManager(classListLayoutManager);

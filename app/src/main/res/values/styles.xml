@@ -157,7 +157,7 @@
     </style>
 
 
-    <!-- classes ui -->
+    <!-- aClasses ui -->
     <style name="cl_header">
         <item name="android:background">@drawable/gradient_dark_light</item>
         <item name="android:padding">10dp</item>
