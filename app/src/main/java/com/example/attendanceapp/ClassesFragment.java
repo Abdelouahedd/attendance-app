@@ -2,6 +2,8 @@ package com.example.attendanceapp;
 
 import android.os.Bundle;
 import android.os.strictmode.CleartextNetworkViolation;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -31,13 +35,16 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
     private RecyclerView.LayoutManager classListLayoutManager;
     private FloatingActionButton addClassroomButton;
     private List<Classroom> classrooms;
+    private List<Classroom> classroomsCopy;
     private Classroom newClassroom;
-
+    private TextInputEditText searchBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         classrooms = (List<Classroom>) getArguments().getSerializable("classrooms");
+        classroomsCopy = new ArrayList<>(classrooms.size());
+        classroomsCopy.addAll(classrooms);
         return inflater.inflate(R.layout.fragment_classes, container, false);
     }
 
@@ -63,6 +70,24 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
                 dialog.setTargetFragment(ClassesFragment.this, 2);
                 dialog.show(getActivity().getSupportFragmentManager(), "Add " +
                         "Classroom");
+            }
+        });
+
+        searchBar = view.findViewById(R.id.filter_classes);
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterClassrooms(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
@@ -98,6 +123,7 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
                         Toast.makeText(getContext(), "Classroom Added",
                                 Toast.LENGTH_LONG).show();
                         classrooms.add(newClassroom);
+                        classroomsCopy.add(newClassroom);
                         classListAdapter.notifyItemInserted(classrooms.size() - 1);
                     }
                 })
@@ -122,5 +148,28 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
             invitationCode.append(rand.nextInt(10));
         }
         return invitationCode.toString();
+    }
+
+    private void filterClassrooms(String text) {
+        classrooms.clear();
+        if(text.isEmpty()){
+            classrooms.addAll(classroomsCopy);
+        } else{
+            text = text.toLowerCase();
+
+            for(Classroom classroom: classroomsCopy){
+
+                if(classroom.getLabel().toLowerCase().contains(text)) {
+                    classrooms.add(classroom);
+                    continue;
+                }
+
+                if ( classroom.getSubject().toLowerCase().contains(text) ) {
+                    classrooms.add(classroom);
+                    continue;
+                }
+            }
+        }
+        classListAdapter.notifyDataSetChanged();
     }
 }

@@ -36,8 +36,9 @@
     <string name="search_input_hint">Type to filter …</string>
 
     <!-- aClasses UI -->
-    <string name="cl_header_title">aClasses</string>
-    <string name="cl_header_subtitle">List of aClasses your are teaching</string>
+    <string name="cl_header_title">Classrooms</string>
+    <string name="cl_header_subtitle">List of classroom you have
+        create</string>
     <string name="filter_classes_hint">Classe name, subject, Date</string>
 
     <!-- students list fragment-->
