@@ -16,8 +16,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -71,60 +73,7 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
                         "Clicked: " + classroom.getLabel(),
                         Toast.LENGTH_LONG).show();
 
-
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                db.collection("attendance")
-                        .whereEqualTo("classroom", classroom.getId())
-                        .get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            List<Student> students = new ArrayList<>();
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                                for (DocumentSnapshot documentSnapshot:
-                                        queryDocumentSnapshots) {
-
-                                    Attendance attendance =
-                                            documentSnapshot.toObject(Attendance.class);
-
-                                    Log.d("TAG", "onSuccess: " + attendance.getClassroom());
-                                    db.collection("students")
-                                            .document(attendance.getStudent())
-                                            .get()
-                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                @Override
-                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                    if ( documentSnapshot.exists() ) {
-                                                        Student student =
-                                                                documentSnapshot.toObject(Student.class);
-                                                        student.setAttendance(attendance);
-                                                        students.add(student);
-                                                        Log.d("TAG", "onSuccess" +
-                                                                ": " + student.getFullname());
-                                                    }
-                                                }
-                                            });
-                                }
-
-                                StudentsFragment fragment =
-                                        StudentsFragment.newInstance(students);
-
-                                getActivity().getSupportFragmentManager()
-                                        .beginTransaction()
-                                        .replace(R.id.fragment_container,
-                                                fragment)
-                                        .commit();
-
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("TAG", "onFailure: " + e.getMessage());
-                            }
-                        });
+                loadStudents(classroom);
 
             }
         });
@@ -159,6 +108,70 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
 
             }
         });
+    }
+
+    private void loadStudents(Classroom classroom) {
+        // load student corresponding to classroom in new fragmenet
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        List<Student> students = new ArrayList<>();
+
+        db.collection("attendance")
+                .whereEqualTo("classroom", classroom.getId())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (DocumentSnapshot documentSnapshot:
+                                queryDocumentSnapshots) {
+
+                            Attendance attendance =
+                                    documentSnapshot.toObject(Attendance.class);
+
+                            // load students documents
+                            db.collection("students")
+                                    .document(attendance.getStudent())
+                                    .get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                            if ( documentSnapshot.exists() ) {
+
+                                                Student student =
+                                                        documentSnapshot.toObject(Student.class);
+                                                student.setAttendance(attendance);
+                                                students.add(student);
+                                                Log.d("TAG", "onSuccess" +
+                                                        ": " + student.getFullname());
+
+                                            }
+                                        }
+                                    });
+                        }
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("TAG", "onFailure: " + e.getMessage());
+                    }
+                })
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        StudentsFragment fragment =
+                                StudentsFragment.newInstance(students);
+
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_container,
+                                        fragment)
+                                .commit();
+                    }
+                });
     }
 
     public static ClassesFragment newInstance(List<Classroom> classrooms) {
