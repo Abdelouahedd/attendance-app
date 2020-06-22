@@ -34,13 +34,14 @@ public class StudentListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         StudentViewHolder viewHolder = (StudentViewHolder) holder;
         Student student = students.get(position);
+        Attendance attendance = student.getAttendance();
 
-        viewHolder.studentName.setText(student.getFullName());
+        viewHolder.studentName.setText(student.getFullname());
         viewHolder.studentGender.setText(student.getGender());
-        viewHolder.studentPoints.setText(student.getPoints().toString());
-        viewHolder.studentJoined.setText(student.getJoined().toString());
-        viewHolder.studentPresence.setText(student.getPresence().toString());
-        viewHolder.studentAbsence.setText(student.getAbsence().toString());
+        viewHolder.studentPoints.setText(attendance.getPoints().toString());
+        viewHolder.studentJoined.setText(attendance.getJoinedAt().toString());
+        viewHolder.studentPresence.setText(attendance.getPresence().toString());
+        viewHolder.studentAbsence.setText(attendance.getAbsence().toString());
     }
 
     @Override

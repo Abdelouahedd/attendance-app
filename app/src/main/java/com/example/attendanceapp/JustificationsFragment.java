@@ -31,11 +31,11 @@ public class JustificationsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        List<Justification> justifications = Justification.dataSource(10);
+//        List<Justification> justifications = Justification.dataSource(10);
 
         justificationList = view.findViewById(R.id.justification_listview);
         layoutManager = new LinearLayoutManager(getContext());
-        viewAdapater = new JustificationListAdapter(justifications);
+        viewAdapater = new JustificationListAdapter(null);
 
         justificationList.setLayoutManager(layoutManager);
         justificationList.setAdapter(viewAdapater);

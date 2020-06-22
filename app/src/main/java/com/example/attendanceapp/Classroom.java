@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Classroom implements Serializable {
 
+    private String id;
     private String label;
     private String subject;
     private Integer numberStudents;
@@ -21,7 +22,8 @@ public class Classroom implements Serializable {
         // needed by firebase
     }
 
-    public Classroom(String label, String subject, Integer numberStudents, Date createdAt, String invitationCode, Integer numberSession, String professorUUID) {
+    public Classroom(String id, String label, String subject, Integer numberStudents, Date createdAt, String invitationCode, Integer numberSession, String professorUUID) {
+        this.id = id;
         this.label = label;
         this.subject = subject;
         this.numberStudents = numberStudents;
@@ -112,5 +114,13 @@ public class Classroom implements Serializable {
 
     public void setProfessorUUID(String professorUUID) {
         this.professorUUID = professorUUID;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

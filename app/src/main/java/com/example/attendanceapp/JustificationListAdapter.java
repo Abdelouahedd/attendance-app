@@ -38,8 +38,8 @@ public class JustificationListAdapter extends RecyclerView.Adapter {
                 (JustificationListViewHolder) holder;
         Justification justification = justifications.get(position);
 
-        viewHolder.filename.setText(justification.getFilename());
-        viewHolder.createdAt.setText(justification.getCreated().toString());
+        viewHolder.filename.setText(justification.getTitle());
+        viewHolder.createdAt.setText(justification.getCreateAt().toString());
     }
 
     @Override
