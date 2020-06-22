@@ -2,7 +2,7 @@
 
 ## Description
 
-Simple Android that facilitate the task of keeping track of student how are absent or present, by using technoloy
+Simple Android app that facilitate the task of keeping track of student how are absent or present, by using technoloy
 like Qr Code.
 
 The app usage could by generalized as a relation between supervision (professor) with co-worker (student), or handling meetings sessions .... (Possibilities are endless).
