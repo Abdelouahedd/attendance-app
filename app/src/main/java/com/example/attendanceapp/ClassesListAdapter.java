@@ -12,6 +12,15 @@ import java.util.List;
 
 public class ClassesListAdapter extends RecyclerView.Adapter {
 
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        public void onItemClick(int position);
+    }
+
+    public void addOnItemClickListener (OnItemClickListener listener) {
+        this.listener = listener;
+    }
     // view holder for classes
     public static class ClassListViewHolder extends RecyclerView.ViewHolder {
         private TextView mClasseName;
@@ -19,13 +28,20 @@ public class ClassesListAdapter extends RecyclerView.Adapter {
         private TextView mStudentsNumber;
         private TextView mclassCreationDate;
 
-        public ClassListViewHolder(View itemView) {
+        public ClassListViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             mClasseName = itemView.findViewById(R.id.class_name);
             mSubjectName = itemView.findViewById(R.id.subject_name);
             mStudentsNumber = itemView.findViewById(R.id.students_number);
             mclassCreationDate =
                     itemView.findViewById(R.id.class_creation_date);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -41,7 +57,7 @@ public class ClassesListAdapter extends RecyclerView.Adapter {
                 parent,
                 false
         );
-        ClassListViewHolder classViewHolder = new ClassListViewHolder(v);
+        ClassListViewHolder classViewHolder = new ClassListViewHolder(v, listener);
         return classViewHolder;
     }
 

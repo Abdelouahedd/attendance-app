@@ -20,7 +20,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,13 +33,14 @@ import java.util.Random;
 public class ClassesFragment extends Fragment implements AddClassroomDialog.SaveClassroomInterface {
 
     private RecyclerView classesList;
-    private RecyclerView.Adapter classListAdapter;
+    private ClassesListAdapter classListAdapter;
     private RecyclerView.LayoutManager classListLayoutManager;
     private FloatingActionButton addClassroomButton;
     private List<Classroom> classrooms;
     private List<Classroom> classroomsCopy;
     private Classroom newClassroom;
     private TextInputEditText searchBar;
+
 
     @Nullable
     @Override
@@ -59,6 +62,72 @@ public class ClassesFragment extends Fragment implements AddClassroomDialog.Save
 
         classesList.setLayoutManager(classListLayoutManager);
         classesList.setAdapter(classListAdapter);
+        classListAdapter.addOnItemClickListener(new ClassesListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Classroom classroom = classrooms.get(position);
+
+                Toast.makeText(getContext(),
+                        "Clicked: " + classroom.getLabel(),
+                        Toast.LENGTH_LONG).show();
+
+
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                db.collection("attendance")
+                        .whereEqualTo("classroom", classroom.getId())
+                        .get()
+                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            List<Student> students = new ArrayList<>();
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                                for (DocumentSnapshot documentSnapshot:
+                                        queryDocumentSnapshots) {
+
+                                    Attendance attendance =
+                                            documentSnapshot.toObject(Attendance.class);
+
+                                    Log.d("TAG", "onSuccess: " + attendance.getClassroom());
+                                    db.collection("students")
+                                            .document(attendance.getStudent())
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    if ( documentSnapshot.exists() ) {
+                                                        Student student =
+                                                                documentSnapshot.toObject(Student.class);
+                                                        student.setAttendance(attendance);
+                                                        students.add(student);
+                                                        Log.d("TAG", "onSuccess" +
+                                                                ": " + student.getFullname());
+                                                    }
+                                                }
+                                            });
+                                }
+
+                                StudentsFragment fragment =
+                                        StudentsFragment.newInstance(students);
+
+                                getActivity().getSupportFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.fragment_container,
+                                                fragment)
+                                        .commit();
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("TAG", "onFailure: " + e.getMessage());
+                            }
+                        });
+
+            }
+        });
 
         addClassroomButton = view.findViewById(R.id.add_classroom);
         addClassroomButton.setOnClickListener(new View.OnClickListener() {
